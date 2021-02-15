@@ -17,6 +17,12 @@ export default function FibonacciCubes({queryHistory}) {
     fibEntry[1] / sumOfQueriedFibonacciValues,
   ]);
 
+  const generateRandomColor = () => {
+    const randomColor = [0, 0, 0].map((i) =>
+      Math.floor(Math.random() * (255 - 1) + 1)
+    );
+    return `RGB(${randomColor.join(",")})`;
+  };
   return (
     <div>
       <div className="cubes-area">
@@ -26,9 +32,7 @@ export default function FibonacciCubes({queryHistory}) {
             style={{
               height: "100%",
               width: `${relativeWidth[1] * 100}%`,
-              backgroundColor: `#${Math.floor(
-                Math.random() * 16777215
-              ).toString(16)}`,
+              backgroundColor: generateRandomColor(),
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
