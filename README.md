@@ -1,3 +1,28 @@
+# The Fibonacci API and webapp
+
+## The API
+
+### How to use it
+
+To query the API, send a get request to: https://us-central1-get-n-element-fibonacci.cloudfunctions.net/fibonacci?N=${n} where n is the element of the Fibonacci sequence you wish to query. For example, to query the 20th element of the Fibonacci sequence, send a request to https://us-central1-get-n-element-fibonacci.cloudfunctions.net/fibonacci?N=20.
+The response from the API is in the form of a JSON containing a "result" key that contains the desired response.
+
+### The Fibonacci algorithm
+
+The [algorithm](https://github.com/thibaudszy/fibonacci-backend) that returns the nth element of the Fibonacci sequence is a recursive algorithm with memoisation. Memoisation greatly improves the performance of the algorithm by reducing greatly the amount of times the Fibonacci function has to call itself.
+
+### Deployment
+
+The Fibonacci API is deployed as a Google Cloud function as it is a simple function that does not need a full fledged server to be configured for it to run.
+
+## The Frontend
+
+The frontent is a single page web app that queries the API and stores the results in the local storage. This allows to reduce the load on the API by preventing users from querying the API for the same value several times. Having the values in the local storage also enables persistency between sessions.
+
+### Query history visualisation
+
+The bottom part of the page is dedicated to showing the previously queried values. Everytime a new value is queried, it will be displayed at the bottom of the page, with a width proportional to its value compared to the sum of all the previously queried values. This allows the user to visualise how fast the numbers rise in the Fibonacci sequence.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
