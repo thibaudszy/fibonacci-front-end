@@ -1,0 +1,6 @@
+.cubes-area {
+  height: 60vh;
+  background-color: bisque;
+  display: flex;
+  flex-direction: row;
+}

@@ -1,7 +1,10 @@
 import axios from "axios";
 
-const getQueryHistory = () => {
-  return JSON.parse(localStorage.queryHistory);
+export const getQueryHistory = () => {
+  console.log("localStorage.queryHistory", localStorage.queryHistory);
+  return localStorage.queryHistory === "{}"
+    ? {}
+    : JSON.parse(localStorage.queryHistory);
 };
 const addElementToLocalStorage = (N, nFibonacciElement) => {
   const queryHistory = getQueryHistory();
@@ -23,8 +26,12 @@ export const getN_elementFibonacciAndStoreInLocalStorage = async (N) => {
     );
     const N_elementFibonacci = N_elementFibonacciQuery.data.result;
     addElementToLocalStorage(N, N_elementFibonacci);
+    console.log("N_elementFibonacci", N_elementFibonacci);
     return N_elementFibonacci;
   } catch {
     console.log("error");
   }
+};
+export const clearQueryHistory = () => {
+  localStorage.setItem("queryHistory", JSON.stringify({0: 0}));
 };

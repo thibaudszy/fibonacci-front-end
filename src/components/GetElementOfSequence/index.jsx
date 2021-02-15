@@ -1,7 +1,14 @@
-import React from "react";
-import {getN_elementFibonacciAndStoreInLocalStorage} from "./helpers";
+import React, {useState} from "react";
+import {
+  clearQueryHistory,
+  getN_elementFibonacciAndStoreInLocalStorage,
+} from "./helpers";
 
-export default function GetElementOfSequence() {
+export default function GetElementOfSequence({
+  refreshSwitch,
+  setRefreshSwitch,
+}) {
+  const [fibonacciElementToDisplay, setFibonacciElementToDisplay] = useState(0);
   return (
     <div>
       <form>
@@ -15,21 +22,28 @@ export default function GetElementOfSequence() {
           required
           min={0}
           max={100}
+          defaultValue={0}
+          placeholder={"Enter a number between 0 and 100"}
         />
 
         <button
           type={"submit"}
-          onClick={(e) => {
+          onClick={async (e) => {
             e.preventDefault();
-            getN_elementFibonacciAndStoreInLocalStorage(
-              document.getElementById("fibonacci-element-number").value
+            setFibonacciElementToDisplay(
+              await getN_elementFibonacciAndStoreInLocalStorage(
+                document.getElementById("fibonacci-element-number").value
+              )
             );
+            setRefreshSwitch(!refreshSwitch);
           }}
         >
           {" "}
           submit
         </button>
       </form>
+      <button onClick={clearQueryHistory}> Clear query history</button>
+      <h1> {fibonacciElementToDisplay}</h1>
     </div>
   );
 }
