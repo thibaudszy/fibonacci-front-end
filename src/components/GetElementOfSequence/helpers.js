@@ -2,9 +2,9 @@ import axios from "axios";
 
 export const getQueryHistory = () => {
   console.log("localStorage.queryHistory", localStorage.queryHistory);
-  return localStorage.queryHistory === "{}"
-    ? {}
-    : JSON.parse(localStorage.queryHistory);
+  return localStorage?.queryHistory
+    ? JSON.parse(localStorage.queryHistory)
+    : {0: 0};
 };
 const addElementToLocalStorage = (N, nFibonacciElement) => {
   const queryHistory = getQueryHistory();
@@ -20,13 +20,13 @@ export const getN_elementFibonacciAndStoreInLocalStorage = async (N) => {
     if (N in queryHistory) {
       return queryHistory[N];
     }
-    console.log("querying firebase");
+
     const N_elementFibonacciQuery = await axios.get(
       `https://us-central1-get-n-element-fibonacci.cloudfunctions.net/fibonacci?N=${N}`
     );
     const N_elementFibonacci = N_elementFibonacciQuery.data.result;
     addElementToLocalStorage(N, N_elementFibonacci);
-    console.log("N_elementFibonacci", N_elementFibonacci);
+
     return N_elementFibonacci;
   } catch {
     console.log("error");

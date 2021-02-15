@@ -45,6 +45,13 @@ export default function GetElementOfSequence({
           submit
         </button>
       </form>
+
+      <h1
+        aria-labelledby={`Value of the queried element of the fibonacci sequence`}
+      >
+        {" "}
+        {fibonacciElementToDisplay}
+      </h1>
       <button
         className="flat-button"
         onClick={() => {
@@ -55,7 +62,6 @@ export default function GetElementOfSequence({
         {" "}
         Clear query history
       </button>
-      <h1> {fibonacciElementToDisplay}</h1>
     </div>
   );
 }

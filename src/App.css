@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Code+Pro&display=swap");
 * {
   text-align: center;
+  font-family: "Source Code Pro", monospace;
+}
+.App {
+  background-color: black;
+  color: white;
+  font-size: 16pt;
 }
