@@ -1,0 +1,23 @@
+.fib-query {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: black;
+  color: white;
+  align-items: center;
+  font-size: large;
+}
+.flat-button {
+  background-color: inherit;
+  color: inherit;
+  border: 2px solid white;
+  margin: 1em;
+  width: fit-content;
+}
+.number-input {
+  background-color: inherit;
+  color: inherit;
+  border-left: 2px solid white;
+  margin: 1em;
+}

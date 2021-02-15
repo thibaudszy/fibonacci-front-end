@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import "./style.css";
 import {
   clearQueryHistory,
   getN_elementFibonacciAndStoreInLocalStorage,
@@ -10,15 +11,16 @@ export default function GetElementOfSequence({
 }) {
   const [fibonacciElementToDisplay, setFibonacciElementToDisplay] = useState(0);
   return (
-    <div>
+    <div className="fib-query">
+      <h1>Explore the Fibonacci sequence</h1>
       <form>
         <label htmlFor={"fibonacci-element-number"}>
-          {" "}
-          What element of the Fibonnacci sequence do you want to see?{" "}
+          Select the element of the Fibonacci sequence you want to see.
         </label>
         <input
           type={"number"}
           id={"fibonacci-element-number"}
+          className="number-input"
           required
           min={0}
           max={100}
@@ -28,6 +30,7 @@ export default function GetElementOfSequence({
 
         <button
           type={"submit"}
+          className="flat-button"
           onClick={async (e) => {
             e.preventDefault();
             setFibonacciElementToDisplay(
@@ -42,7 +45,16 @@ export default function GetElementOfSequence({
           submit
         </button>
       </form>
-      <button onClick={clearQueryHistory}> Clear query history</button>
+      <button
+        className="flat-button"
+        onClick={() => {
+          clearQueryHistory();
+          setRefreshSwitch(!refreshSwitch);
+        }}
+      >
+        {" "}
+        Clear query history
+      </button>
       <h1> {fibonacciElementToDisplay}</h1>
     </div>
   );

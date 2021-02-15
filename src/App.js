@@ -12,7 +12,6 @@ function App() {
   }, [refreshSwitch]);
   return (
     <div className="App">
-      <h1>Fibonacci sequence</h1>
       <GetElementOfSequence
         setRefreshSwitch={setRefreshSwitch}
         refreshSwitch={refreshSwitch}
