@@ -36,7 +36,7 @@ export default function FibonacciCubes({queryHistory}) {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              fontSize: "3vw",
+              fontSize: "max(5vh, 20pt)",
               fontWeight: "bold",
             }}
           >
